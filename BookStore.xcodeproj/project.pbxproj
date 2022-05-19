@@ -9,13 +9,24 @@
 /* Begin PBXBuildFile section */
 		DF13785E282803D000DF0452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13785D282803D000DF0452 /* AppDelegate.swift */; };
 		DF137860282803D000DF0452 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13785F282803D000DF0452 /* SceneDelegate.swift */; };
-		DF137862282803D000DF0452 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF137861282803D000DF0452 /* ViewController.swift */; };
 		DF137865282803D000DF0452 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF137863282803D000DF0452 /* Main.storyboard */; };
 		DF137867282803D100DF0452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF137866282803D100DF0452 /* Assets.xcassets */; };
 		DF13786A282803D100DF0452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF137868282803D100DF0452 /* LaunchScreen.storyboard */; };
 		DF137875282803D200DF0452 /* BookStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF137874282803D200DF0452 /* BookStoreTests.swift */; };
 		DF13787F282803D200DF0452 /* BookStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13787E282803D200DF0452 /* BookStoreUITests.swift */; };
 		DF137881282803D200DF0452 /* BookStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF137880282803D200DF0452 /* BookStoreUITestsLaunchTests.swift */; };
+		DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A3283677B10004B0EC /* CartsCell.swift */; };
+		DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A5283677DE0004B0EC /* CartsController.swift */; };
+		DF6478A828367C030004B0EC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A728367C030004B0EC /* Payment.swift */; };
+		DF6478AA28367F2B0004B0EC /* PaymentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A928367F2B0004B0EC /* PaymentHistoryCell.swift */; };
+		DF6478AC28367FA50004B0EC /* PaymentHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AB28367FA50004B0EC /* PaymentHistoryController.swift */; };
+		DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */; };
+		DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AF283688610004B0EC /* PaymentDetailController.swift */; };
+		DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89E28A282816A200A63150 /* BookManagementController.swift */; };
+		DFFC078028363E680070AEA0 /* ListOfBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */; };
+		DFFC078328363F4E0070AEA0 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC078228363F4E0070AEA0 /* Book.swift */; };
+		DFFC07862836424B0070AEA0 /* ListOfBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC07852836424B0070AEA0 /* ListOfBooksCell.swift */; };
+		DFFC078828365DDD0070AEA0 /* BookManagementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC078728365DDD0070AEA0 /* BookManagementCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +50,6 @@
 		DF13785A282803D000DF0452 /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF13785D282803D000DF0452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF13785F282803D000DF0452 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DF137861282803D000DF0452 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DF137864282803D000DF0452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF137866282803D100DF0452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF137869282803D100DF0452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +59,18 @@
 		DF13787A282803D200DF0452 /* BookStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF13787E282803D200DF0452 /* BookStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreUITests.swift; sourceTree = "<group>"; };
 		DF137880282803D200DF0452 /* BookStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF6478A3283677B10004B0EC /* CartsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsCell.swift; sourceTree = "<group>"; };
+		DF6478A5283677DE0004B0EC /* CartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsController.swift; sourceTree = "<group>"; };
+		DF6478A728367C030004B0EC /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		DF6478A928367F2B0004B0EC /* PaymentHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryCell.swift; sourceTree = "<group>"; };
+		DF6478AB28367FA50004B0EC /* PaymentHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryController.swift; sourceTree = "<group>"; };
+		DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailCell.swift; sourceTree = "<group>"; };
+		DF6478AF283688610004B0EC /* PaymentDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailController.swift; sourceTree = "<group>"; };
+		DF89E28A282816A200A63150 /* BookManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementController.swift; sourceTree = "<group>"; };
+		DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBooksController.swift; sourceTree = "<group>"; };
+		DFFC078228363F4E0070AEA0 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		DFFC07852836424B0070AEA0 /* ListOfBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBooksCell.swift; sourceTree = "<group>"; };
+		DFFC078728365DDD0070AEA0 /* BookManagementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +121,15 @@
 		DF13785C282803D000DF0452 /* BookStore */ = {
 			isa = PBXGroup;
 			children = (
-				DF13785D282803D000DF0452 /* AppDelegate.swift */,
-				DF13785F282803D000DF0452 /* SceneDelegate.swift */,
-				DF137861282803D000DF0452 /* ViewController.swift */,
+				DF89E28A282816A200A63150 /* BookManagementController.swift */,
+				DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */,
+				DF6478A5283677DE0004B0EC /* CartsController.swift */,
+				DF6478AB28367FA50004B0EC /* PaymentHistoryController.swift */,
+				DF6478AF283688610004B0EC /* PaymentDetailController.swift */,
 				DF137863282803D000DF0452 /* Main.storyboard */,
-				DF137866282803D100DF0452 /* Assets.xcassets */,
-				DF137868282803D100DF0452 /* LaunchScreen.storyboard */,
-				DF13786B282803D100DF0452 /* Info.plist */,
+				DFFC078128363F260070AEA0 /* DataModels */,
+				DFFC0784283641E40070AEA0 /* Controls */,
+				DF89E2892828097A00A63150 /* System */,
 			);
 			path = BookStore;
 			sourceTree = "<group>";
@@ -125,6 +149,39 @@
 				DF137880282803D200DF0452 /* BookStoreUITestsLaunchTests.swift */,
 			);
 			path = BookStoreUITests;
+			sourceTree = "<group>";
+		};
+		DF89E2892828097A00A63150 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				DF13786B282803D100DF0452 /* Info.plist */,
+				DF137868282803D100DF0452 /* LaunchScreen.storyboard */,
+				DF137866282803D100DF0452 /* Assets.xcassets */,
+				DF13785F282803D000DF0452 /* SceneDelegate.swift */,
+				DF13785D282803D000DF0452 /* AppDelegate.swift */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		DFFC078128363F260070AEA0 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFFC078228363F4E0070AEA0 /* Book.swift */,
+				DF6478A728367C030004B0EC /* Payment.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		DFFC0784283641E40070AEA0 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				DFFC07852836424B0070AEA0 /* ListOfBooksCell.swift */,
+				DFFC078728365DDD0070AEA0 /* BookManagementCell.swift */,
+				DF6478A3283677B10004B0EC /* CartsCell.swift */,
+				DF6478A928367F2B0004B0EC /* PaymentHistoryCell.swift */,
+				DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +315,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF137862282803D000DF0452 /* ViewController.swift in Sources */,
+				DFFC07862836424B0070AEA0 /* ListOfBooksCell.swift in Sources */,
+				DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */,
+				DFFC078028363E680070AEA0 /* ListOfBooksController.swift in Sources */,
+				DFFC078328363F4E0070AEA0 /* Book.swift in Sources */,
+				DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */,
+				DF6478A828367C030004B0EC /* Payment.swift in Sources */,
+				DF6478AC28367FA50004B0EC /* PaymentHistoryController.swift in Sources */,
+				DF6478AA28367F2B0004B0EC /* PaymentHistoryCell.swift in Sources */,
 				DF13785E282803D000DF0452 /* AppDelegate.swift in Sources */,
+				DFFC078828365DDD0070AEA0 /* BookManagementCell.swift in Sources */,
+				DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */,
+				DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */,
+				DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */,
 				DF137860282803D000DF0452 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
