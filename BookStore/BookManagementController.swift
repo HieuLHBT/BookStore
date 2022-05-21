@@ -7,20 +7,27 @@
 
 import UIKit
 
-class BookTableViewController: UITableViewController {
+class BookManagementController: UITableViewController {
     var books = [Book]()
+    private var dal = BookManagementDatabase()
+    enum NavigationsType {
+        case newBook
+        case editBook
+    }
+    var navigationType:NavigationsType = .newBook
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 2, total_money: 0) {
-            books += [book]
+        dal.readBookList(books: &books)
+        if books.count == 0 {
+            if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 2) {
+                books += [book]
+                if dal.open() {
+                    dal.insertBook(book: book)
+                }
+            }
         }
-        if let book = Book(book_id: 2, book_name: "Sách hai", author: "Tác giả hai", price: 120000, image: UIImage(named: "Image2"), quantity: 1, total_money: 0) {
-            books += [book]
-        }
-        if let book = Book(book_id: 3, book_name: "Sách ba", author: "Tác giả ba", price: 70000, image: UIImage(named: "Image3"), quantity: 3, total_money: 0) {
-            books += [book]
-        }
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     // MARK: - Table view data source
@@ -54,18 +61,19 @@ class BookTableViewController: UITableViewController {
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            books.remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -89,14 +97,61 @@ class BookTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let segueName = segue.identifier {
+            switch segueName {
+            case "newBook":
+                navigationType = .newBook
+                if let destinationController = segue.destination as? BookDetailController {
+                    destinationController.navigationType = .newBook
+                }
+            case "editBook":
+                navigationType = .editBook
+                //Get the selected meal
+                if let selecteIndexparthdRow = tableView.indexPathForSelectedRow {
+                    //Get the selected form data source
+                    if let destinationController = segue.destination as? BookDetailController {
+                        destinationController.book = books[selecteIndexparthdRow.row]
+                        destinationController.navigationType = .editBook
+                    }
+                }
+            default:
+                break
+            }
+        }
     }
-    */
+    
+    // Create unWind to return form MealDetailController
+    @IBAction func unWindFormMealDetailController(segue:UIStoryboardSegue) {
+        //Get soucre controller (MealDetailController)
+        if let sourceController = segue.source as? BookDetailController {
+            if let book = sourceController.book {
+                //Indetifying update or add new meal
+                switch navigationType {
+                case .newBook:
+                    //Add the new meal into the datasource: meals
+                    books += [book]
+                    //Add the new meal into the table view
+                    let indexParth = IndexPath(row: books.count - 1, section: 0)
+                    tableView.insertRows(at: [indexParth], with: .automatic)
+                case .editBook:
+                    //Get the position of selectd row
+                    if let selecteIndexparthdRow = tableView.indexPathForSelectedRow {
+                        //Update to data source
+                        books[selecteIndexparthdRow.row] = book
+                        //Reload the update meal to table view
+                        tableView.reloadRows(at: [selecteIndexparthdRow], with: .automatic)
+                    }
+                    break
+                }
+            }
+        }
+    }
 
 }

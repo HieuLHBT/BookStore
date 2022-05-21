@@ -12,13 +12,13 @@ class PaymentDetailController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 1, total_money: 80000) {
+        if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 1) {
             books += [book]
         }
-        if let book = Book(book_id: 2, book_name: "Sách hai", author: "Tác giả hai", price: 120000, image: UIImage(named: "Image2"), quantity: 2, total_money: 240000) {
+        if let book = Book(book_id: 2, book_name: "Sách hai", author: "Tác giả hai", price: 120000, image: UIImage(named: "Image2"), quantity: 2) {
             books += [book]
         }
-        if let book = Book(book_id: 3, book_name: "Sách ba", author: "Tác giả ba", price: 70000, image: UIImage(named: "Image3"), quantity: 3, total_money: 210000) {
+        if let book = Book(book_id: 3, book_name: "Sách ba", author: "Tác giả ba", price: 70000, image: UIImage(named: "Image3"), quantity: 3) {
             books += [book]
         }
     }

@@ -17,13 +17,13 @@ class Book {
     var quantity:Int
     var total_money:Int
     
-    init?(book_id:Int, book_name:String, author:String, price:Int, image:UIImage?, quantity:Int, total_money:Int) {
+    init?(book_id:Int, book_name:String, author:String, price:Int, image:UIImage?, quantity:Int) {
         self.book_id = book_id
         self.book_name = book_name
         self.author = author
         self.price = price
         self.image = image
         self.quantity = quantity
-        self.total_money = total_money
+        self.total_money = self.price * self.quantity
     }
 }

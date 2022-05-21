@@ -23,6 +23,14 @@
 		DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */; };
 		DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AF283688610004B0EC /* PaymentDetailController.swift */; };
 		DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89E28A282816A200A63150 /* BookManagementController.swift */; };
+		DFA2ABD12837C8E100649FF8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABC62837C8E100649FF8 /* FMResultSet.m */; };
+		DFA2ABD22837C8E100649FF8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABC72837C8E100649FF8 /* FMDatabase.m */; };
+		DFA2ABD32837C8E100649FF8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABCB2837C8E100649FF8 /* FMDatabaseAdditions.m */; };
+		DFA2ABD42837C8E100649FF8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABCC2837C8E100649FF8 /* FMDatabasePool.m */; };
+		DFA2ABD52837C8E100649FF8 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABCE2837C8E100649FF8 /* FMDatabaseQueue.m */; };
+		DFA2ABD82837C96900649FF8 /* BookManagementDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABD72837C96900649FF8 /* BookManagementDatabase.swift */; };
+		DFE8878828386DC100A132BA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE8878728386DB400A132BA /* libsqlite3.0.tbd */; };
+		DFE8878A2838D96C00A132BA /* BookDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE887892838D96C00A132BA /* BookDetailController.swift */; };
 		DFFC078028363E680070AEA0 /* ListOfBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */; };
 		DFFC078328363F4E0070AEA0 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC078228363F4E0070AEA0 /* Book.swift */; };
 		DFFC07862836424B0070AEA0 /* ListOfBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC07852836424B0070AEA0 /* ListOfBooksCell.swift */; };
@@ -67,6 +75,21 @@
 		DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailCell.swift; sourceTree = "<group>"; };
 		DF6478AF283688610004B0EC /* PaymentDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailController.swift; sourceTree = "<group>"; };
 		DF89E28A282816A200A63150 /* BookManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementController.swift; sourceTree = "<group>"; };
+		DFA2ABC52837C8E100649FF8 /* BookStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookStore-Bridging-Header.h"; sourceTree = "<group>"; };
+		DFA2ABC62837C8E100649FF8 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/FMResultSet.m; sourceTree = "<group>"; };
+		DFA2ABC72837C8E100649FF8 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/FMDatabase.m; sourceTree = "<group>"; };
+		DFA2ABC82837C8E100649FF8 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/FMResultSet.h; sourceTree = "<group>"; };
+		DFA2ABC92837C8E100649FF8 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		DFA2ABCA2837C8E100649FF8 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/FMDatabase.h; sourceTree = "<group>"; };
+		DFA2ABCB2837C8E100649FF8 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		DFA2ABCC2837C8E100649FF8 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/FMDatabasePool.m; sourceTree = "<group>"; };
+		DFA2ABCD2837C8E100649FF8 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/FMDatabasePool.h; sourceTree = "<group>"; };
+		DFA2ABCE2837C8E100649FF8 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		DFA2ABCF2837C8E100649FF8 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/FMDB.h; sourceTree = "<group>"; };
+		DFA2ABD02837C8E100649FF8 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		DFA2ABD72837C96900649FF8 /* BookManagementDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementDatabase.swift; sourceTree = "<group>"; };
+		DFE8878728386DB400A132BA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		DFE887892838D96C00A132BA /* BookDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailController.swift; sourceTree = "<group>"; };
 		DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBooksController.swift; sourceTree = "<group>"; };
 		DFFC078228363F4E0070AEA0 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		DFFC07852836424B0070AEA0 /* ListOfBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBooksCell.swift; sourceTree = "<group>"; };
@@ -78,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE8878828386DC100A132BA /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +129,7 @@
 				DF137873282803D200DF0452 /* BookStoreTests */,
 				DF13787D282803D200DF0452 /* BookStoreUITests */,
 				DF13785B282803D000DF0452 /* Products */,
+				DFE8878628386DB400A132BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,12 +146,15 @@
 		DF13785C282803D000DF0452 /* BookStore */ = {
 			isa = PBXGroup;
 			children = (
-				DF89E28A282816A200A63150 /* BookManagementController.swift */,
 				DFFC077F28363E680070AEA0 /* ListOfBooksController.swift */,
+				DF89E28A282816A200A63150 /* BookManagementController.swift */,
+				DFE887892838D96C00A132BA /* BookDetailController.swift */,
 				DF6478A5283677DE0004B0EC /* CartsController.swift */,
 				DF6478AB28367FA50004B0EC /* PaymentHistoryController.swift */,
 				DF6478AF283688610004B0EC /* PaymentDetailController.swift */,
 				DF137863282803D000DF0452 /* Main.storyboard */,
+				DFA2ABD62837C94000649FF8 /* DAL */,
+				DFA2ABC42837C60900649FF8 /* FMDB */,
 				DFFC078128363F260070AEA0 /* DataModels */,
 				DFFC0784283641E40070AEA0 /* Controls */,
 				DF89E2892828097A00A63150 /* System */,
@@ -161,6 +189,41 @@
 				DF13785D282803D000DF0452 /* AppDelegate.swift */,
 			);
 			name = System;
+			sourceTree = "<group>";
+		};
+		DFA2ABC42837C60900649FF8 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				DFA2ABCA2837C8E100649FF8 /* FMDatabase.h */,
+				DFA2ABC72837C8E100649FF8 /* FMDatabase.m */,
+				DFA2ABC92837C8E100649FF8 /* FMDatabaseAdditions.h */,
+				DFA2ABCB2837C8E100649FF8 /* FMDatabaseAdditions.m */,
+				DFA2ABCD2837C8E100649FF8 /* FMDatabasePool.h */,
+				DFA2ABCC2837C8E100649FF8 /* FMDatabasePool.m */,
+				DFA2ABD02837C8E100649FF8 /* FMDatabaseQueue.h */,
+				DFA2ABCE2837C8E100649FF8 /* FMDatabaseQueue.m */,
+				DFA2ABCF2837C8E100649FF8 /* FMDB.h */,
+				DFA2ABC82837C8E100649FF8 /* FMResultSet.h */,
+				DFA2ABC62837C8E100649FF8 /* FMResultSet.m */,
+				DFA2ABC52837C8E100649FF8 /* BookStore-Bridging-Header.h */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		DFA2ABD62837C94000649FF8 /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				DFA2ABD72837C96900649FF8 /* BookManagementDatabase.swift */,
+			);
+			path = DAL;
+			sourceTree = "<group>";
+		};
+		DFE8878628386DB400A132BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8878728386DB400A132BA /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DFFC078128363F260070AEA0 /* DataModels */ = {
@@ -252,6 +315,7 @@
 				TargetAttributes = {
 					DF137859282803D000DF0452 = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1340;
 					};
 					DF13786F282803D200DF0452 = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -316,19 +380,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFFC07862836424B0070AEA0 /* ListOfBooksCell.swift in Sources */,
+				DFE8878A2838D96C00A132BA /* BookDetailController.swift in Sources */,
 				DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */,
 				DFFC078028363E680070AEA0 /* ListOfBooksController.swift in Sources */,
 				DFFC078328363F4E0070AEA0 /* Book.swift in Sources */,
+				DFA2ABD32837C8E100649FF8 /* FMDatabaseAdditions.m in Sources */,
 				DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */,
 				DF6478A828367C030004B0EC /* Payment.swift in Sources */,
 				DF6478AC28367FA50004B0EC /* PaymentHistoryController.swift in Sources */,
 				DF6478AA28367F2B0004B0EC /* PaymentHistoryCell.swift in Sources */,
+				DFA2ABD52837C8E100649FF8 /* FMDatabaseQueue.m in Sources */,
 				DF13785E282803D000DF0452 /* AppDelegate.swift in Sources */,
+				DFA2ABD12837C8E100649FF8 /* FMResultSet.m in Sources */,
 				DFFC078828365DDD0070AEA0 /* BookManagementCell.swift in Sources */,
 				DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */,
+				DFA2ABD42837C8E100649FF8 /* FMDatabasePool.m in Sources */,
 				DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */,
 				DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */,
+				DFA2ABD82837C96900649FF8 /* BookManagementDatabase.swift in Sources */,
 				DF137860282803D000DF0452 /* SceneDelegate.swift in Sources */,
+				DFA2ABD22837C8E100649FF8 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68Q293A4CL;
@@ -521,6 +593,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hieulhbt.BookStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BookStore/FMDB/BookStore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -531,6 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68Q293A4CL;
@@ -549,6 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hieulhbt.BookStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BookStore/FMDB/BookStore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
