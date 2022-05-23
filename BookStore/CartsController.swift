@@ -8,20 +8,43 @@
 import UIKit
 
 class CartsController: UITableViewController {
-    var books = [Book]()
-
+    var carts = [Cart]()
+    private var dalBooks = BookManagementDatabase()
+    private var dalCarts = CartDatabase()
+    @IBOutlet weak var cash: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 2) {
-            books += [book]
+        carts = dalCarts.readCartList()
+        cashCart()
+    }
+    
+    func cashCart() {
+        var sum: Int = 0
+        let cashCarts = dalCarts.readCartList()
+        for cart in cashCarts {
+            let book = dalBooks.readBook(bookid: cart.book_id)
+            let total = cart.quantity * book.price
+            sum += total
         }
-        if let book = Book(book_id: 2, book_name: "Sách hai", author: "Tác giả hai", price: 120000, image: UIImage(named: "Image2"), quantity: 1) {
-            books += [book]
-        }
-        if let book = Book(book_id: 3, book_name: "Sách ba", author: "Tác giả ba", price: 70000, image: UIImage(named: "Image3"), quantity: 3) {
-            books += [book]
+        cash.text = String(sum)
+    }
+    
+    @IBAction func cashUpdate(_ sender: Any) {
+        cashCart()
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
         }
     }
+    
+    @IBAction func payment(_ sender: Any) {
+        
+    }
+    
 
     // MARK: - Table view data source
 
@@ -32,22 +55,36 @@ class CartsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return books.count
+        return carts.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?  {
+        // add the action button you want to show when swiping on tableView's cell , in this case add the delete button.
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] (action, sourceView, completionHandler) in
+            dalCarts.deleteCart(cardid: carts[indexPath.row].cart_id)
+            carts = dalCarts.readCartList()
+            cashCart()
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseCell = "CartsCell"
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath) as? CartsCell
         {
-            let book = books[indexPath.row]
-            cell.txtBookCode.text = String(book.book_id)
-            cell.txtBookTitle.text = book.book_name
-            cell.txtAuthor.text = book.author
+            let cart = carts[indexPath.row]
+            let book = dalBooks.readBook(bookid: cart.book_id)
+            cell.txtBookName.text = book.book_name
             cell.txtPrice.text = String(book.price)
+            cell.txtQuantity.text = String(cart.quantity)
+            cell.txtTotalMoney.text = String(book.price * cart.quantity)
             cell.imgBook.image = book.image
-            cell.txtQuantity.text = String(book.quantity)
-            cell.txtTotalMoney.text = String(book.total_money)
+            cell.cartID  = cart.cart_id
             return cell
         }
         else {

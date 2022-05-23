@@ -15,6 +15,12 @@
 		DF137875282803D200DF0452 /* BookStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF137874282803D200DF0452 /* BookStoreTests.swift */; };
 		DF13787F282803D200DF0452 /* BookStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13787E282803D200DF0452 /* BookStoreUITests.swift */; };
 		DF137881282803D200DF0452 /* BookStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF137880282803D200DF0452 /* BookStoreUITestsLaunchTests.swift */; };
+		DF1F0774283B361200F0844F /* PaymentDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F0773283B361200F0844F /* PaymentDatabase.swift */; };
+		DF1F0776283B3FC900F0844F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F0775283B3FC900F0844F /* LoginController.swift */; };
+		DF1F077A283B409D00F0844F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F0779283B409D00F0844F /* User.swift */; };
+		DF1F077C283B7B2E00F0844F /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077B283B7B2E00F0844F /* SignupController.swift */; };
+		DF1F077E283B99E100F0844F /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077D283B99E100F0844F /* UserDatabase.swift */; };
+		DF1F0780283BE08B00F0844F /* ForgotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077F283BE08B00F0844F /* ForgotController.swift */; };
 		DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A3283677B10004B0EC /* CartsCell.swift */; };
 		DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A5283677DE0004B0EC /* CartsController.swift */; };
 		DF6478A828367C030004B0EC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A728367C030004B0EC /* Payment.swift */; };
@@ -23,6 +29,8 @@
 		DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */; };
 		DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478AF283688610004B0EC /* PaymentDetailController.swift */; };
 		DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89E28A282816A200A63150 /* BookManagementController.swift */; };
+		DF97148F2839DB5400018A66 /* CartDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97148E2839DB5400018A66 /* CartDatabase.swift */; };
+		DF9714952839EC6A00018A66 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9714942839EC6A00018A66 /* Cart.swift */; };
 		DFA2ABD12837C8E100649FF8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABC62837C8E100649FF8 /* FMResultSet.m */; };
 		DFA2ABD22837C8E100649FF8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABC72837C8E100649FF8 /* FMDatabase.m */; };
 		DFA2ABD32837C8E100649FF8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA2ABCB2837C8E100649FF8 /* FMDatabaseAdditions.m */; };
@@ -67,6 +75,12 @@
 		DF13787A282803D200DF0452 /* BookStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF13787E282803D200DF0452 /* BookStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreUITests.swift; sourceTree = "<group>"; };
 		DF137880282803D200DF0452 /* BookStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF1F0773283B361200F0844F /* PaymentDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDatabase.swift; sourceTree = "<group>"; };
+		DF1F0775283B3FC900F0844F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		DF1F0779283B409D00F0844F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DF1F077B283B7B2E00F0844F /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		DF1F077D283B99E100F0844F /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		DF1F077F283BE08B00F0844F /* ForgotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotController.swift; sourceTree = "<group>"; };
 		DF6478A3283677B10004B0EC /* CartsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsCell.swift; sourceTree = "<group>"; };
 		DF6478A5283677DE0004B0EC /* CartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsController.swift; sourceTree = "<group>"; };
 		DF6478A728367C030004B0EC /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -75,6 +89,8 @@
 		DF6478AD283687E80004B0EC /* PaymentDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailCell.swift; sourceTree = "<group>"; };
 		DF6478AF283688610004B0EC /* PaymentDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailController.swift; sourceTree = "<group>"; };
 		DF89E28A282816A200A63150 /* BookManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagementController.swift; sourceTree = "<group>"; };
+		DF97148E2839DB5400018A66 /* CartDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDatabase.swift; sourceTree = "<group>"; };
+		DF9714942839EC6A00018A66 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		DFA2ABC52837C8E100649FF8 /* BookStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookStore-Bridging-Header.h"; sourceTree = "<group>"; };
 		DFA2ABC62837C8E100649FF8 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/FMResultSet.m; sourceTree = "<group>"; };
 		DFA2ABC72837C8E100649FF8 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/FMDatabase.m; sourceTree = "<group>"; };
@@ -152,6 +168,9 @@
 				DF6478A5283677DE0004B0EC /* CartsController.swift */,
 				DF6478AB28367FA50004B0EC /* PaymentHistoryController.swift */,
 				DF6478AF283688610004B0EC /* PaymentDetailController.swift */,
+				DF1F0775283B3FC900F0844F /* LoginController.swift */,
+				DF1F077B283B7B2E00F0844F /* SignupController.swift */,
+				DF1F077F283BE08B00F0844F /* ForgotController.swift */,
 				DF137863282803D000DF0452 /* Main.storyboard */,
 				DFA2ABD62837C94000649FF8 /* DAL */,
 				DFA2ABC42837C60900649FF8 /* FMDB */,
@@ -214,6 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				DFA2ABD72837C96900649FF8 /* BookManagementDatabase.swift */,
+				DF97148E2839DB5400018A66 /* CartDatabase.swift */,
+				DF1F0773283B361200F0844F /* PaymentDatabase.swift */,
+				DF1F077D283B99E100F0844F /* UserDatabase.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -231,6 +253,8 @@
 			children = (
 				DFFC078228363F4E0070AEA0 /* Book.swift */,
 				DF6478A728367C030004B0EC /* Payment.swift */,
+				DF9714942839EC6A00018A66 /* Cart.swift */,
+				DF1F0779283B409D00F0844F /* User.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -382,21 +406,29 @@
 				DFFC07862836424B0070AEA0 /* ListOfBooksCell.swift in Sources */,
 				DFE8878A2838D96C00A132BA /* BookDetailController.swift in Sources */,
 				DF6478B0283688610004B0EC /* PaymentDetailController.swift in Sources */,
+				DF1F0774283B361200F0844F /* PaymentDatabase.swift in Sources */,
 				DFFC078028363E680070AEA0 /* ListOfBooksController.swift in Sources */,
+				DF1F077A283B409D00F0844F /* User.swift in Sources */,
 				DFFC078328363F4E0070AEA0 /* Book.swift in Sources */,
 				DFA2ABD32837C8E100649FF8 /* FMDatabaseAdditions.m in Sources */,
 				DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */,
 				DF6478A828367C030004B0EC /* Payment.swift in Sources */,
+				DF1F077E283B99E100F0844F /* UserDatabase.swift in Sources */,
 				DF6478AC28367FA50004B0EC /* PaymentHistoryController.swift in Sources */,
 				DF6478AA28367F2B0004B0EC /* PaymentHistoryCell.swift in Sources */,
+				DF97148F2839DB5400018A66 /* CartDatabase.swift in Sources */,
 				DFA2ABD52837C8E100649FF8 /* FMDatabaseQueue.m in Sources */,
+				DF9714952839EC6A00018A66 /* Cart.swift in Sources */,
 				DF13785E282803D000DF0452 /* AppDelegate.swift in Sources */,
 				DFA2ABD12837C8E100649FF8 /* FMResultSet.m in Sources */,
 				DFFC078828365DDD0070AEA0 /* BookManagementCell.swift in Sources */,
 				DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */,
 				DFA2ABD42837C8E100649FF8 /* FMDatabasePool.m in Sources */,
+				DF1F0776283B3FC900F0844F /* LoginController.swift in Sources */,
 				DF6478AE283687E80004B0EC /* PaymentDetailCell.swift in Sources */,
+				DF1F0780283BE08B00F0844F /* ForgotController.swift in Sources */,
 				DF89E28B282816A200A63150 /* BookManagementController.swift in Sources */,
+				DF1F077C283B7B2E00F0844F /* SignupController.swift in Sources */,
 				DFA2ABD82837C96900649FF8 /* BookManagementDatabase.swift in Sources */,
 				DF137860282803D000DF0452 /* SceneDelegate.swift in Sources */,
 				DFA2ABD22837C8E100649FF8 /* FMDatabase.m in Sources */,

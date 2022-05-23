@@ -45,7 +45,6 @@ class PaymentDetailController: UITableViewController {
             cell.txtAuthor.text = book.author
             cell.txtPrice.text = String(book.price)
             cell.imgBook.image = book.image
-            cell.txtQuantity.text = String(book.quantity)
             cell.txtTotalMoney.text = String(book.total_money)
             return cell
         }

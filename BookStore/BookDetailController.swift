@@ -56,9 +56,8 @@ class BookDetailController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         navigationItem.title = edtBookName.text!
-        navigationItem.title = edtAuthor.text!
-        navigationItem.title = edtPrice.text!
     }
+    
     
     //MARK: Image processing
     @IBAction func imageProcessing(_ sender: UITapGestureRecognizer) {
@@ -91,25 +90,26 @@ class BookDetailController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     
-    @IBAction func cancel(_ sender: Any) {
-        if let navigationController = navigationController {
-            navigationController.popViewController(animated: true)
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        switch navigationType {
+        case .newBook:
+            dismiss(animated: true, completion: nil)
+        case .editBook:
+            //pop as kieu ve man hinh can khac null thi dung
+            //Get the navigation controller
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: true)
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Check if the sender it btnSave or not
-        if let btnSender = sender as? UIBarButtonItem {
-            if btnSender === btnImport {
-                let book_id = Int(edtBookID.text ?? "0")
-                let book_name = edtBookName.text ?? ""
-                let author = edtAuthor.text ?? ""
-                let price = Int(edtPrice.text ?? "0")
-                let image = imgBook.image
-                
-                //Create the neal meal
-                book = Book(book_id: book_id ?? 0, book_name: book_name, author: author, price: price ?? 0, image: image, quantity: 1)
-            }
-        }
+        let book_id = Int(edtBookID.text ?? "0")
+        let book_name = edtBookName.text ?? ""
+        let author = edtAuthor.text ?? ""
+        let price = Int(edtPrice.text ?? "0")
+        let image = imgBook.image
+        //Create the neal meal
+        book = Book(book_id: book_id ?? 0, book_name: book_name, author: author, price: price ?? 0, image: image, quantity: 1)
     }
 }

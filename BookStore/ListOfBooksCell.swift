@@ -16,6 +16,8 @@ class ListOfBooksCell: UITableViewCell {
     @IBOutlet weak var txtPrice: UITextField!
     @IBOutlet weak var txtQuantity: UITextField!
     @IBOutlet weak var btnAddToBasket: UIButton!
+    private var dalBooks = BookManagementDatabase()
+    private var dalCarts = CartDatabase()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +29,22 @@ class ListOfBooksCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func addToCart(_ sender: UIButton) {
+        let book_id = Int(txtBookCode.text ?? "0")
+        let quantity = Int(txtQuantity.text ?? "0")
+        let cashCarts = dalCarts.readCartList()
+        var check = false
+        for cart in cashCarts {
+            if (cart.book_id == book_id) {
+                let sum = cart.quantity + quantity!
+                dalCarts.updateCart(cartid: cart.cart_id, quantity: sum)
+                check = true
+                break
+            }
+        }
+        if !check {
+            dalCarts.insertCart(bookid: book_id ?? 0, quantity: quantity ?? 0)
+        }
+    }
 }

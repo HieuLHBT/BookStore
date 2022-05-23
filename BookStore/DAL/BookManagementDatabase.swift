@@ -33,17 +33,18 @@ class BookManagementDatabase {
         }
         else {
             os_log("Database is created successful!")
+            createTables()
         }
     }
     // Create table
     func createTables() {
         if open() {
             let sql = "CREATE TABLE " + TABLE_NAME + "( "
-                + BOOK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + BOOK_NAME + " TEXT, "
-                + BOOK_AUTHOR + " TEXT, "
-                + BOOK_PRICE + " INTEGER, "
-                + BOOK_IMAGE + " TEXT )"
+            + BOOK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + BOOK_NAME + " TEXT, "
+            + BOOK_AUTHOR + " TEXT, "
+            + BOOK_PRICE + " INTEGER, "
+            + BOOK_IMAGE + " TEXT )"
             if db!.executeStatements(sql) {
                 os_log("Table is created!")
             }
@@ -101,21 +102,62 @@ class BookManagementDatabase {
     }
     
     func deleteBook(book: Book){
-        if db != nil {
-            let sql = "DELETE FROM \(TABLE_NAME) WHERE \(BOOK_ID) = ?"
+        if open() {
+            if db != nil {
+                let sql = "DELETE FROM \(TABLE_NAME) WHERE \(BOOK_ID) = ?"
+                do {
+                    try db!.executeUpdate(sql, values: [book.book_id])
+                    os_log("The book is deleted!")
+                }
+                catch {
+                    os_log("Fail to delete the book!")
+                }
+            }
+            else {
+                os_log("Database is nil!")
+            }
+        }
+        close()
+    }
+    
+    func readBook(bookid: Int) -> Book {
+        var book:Book?
+        if open() {
+            var results: FMResultSet?
+            let sql = "SELECT * FROM \(TABLE_NAME) WHERE \(BOOK_ID) = ?"
+            // Query
             do {
-                try db!.executeUpdate(sql, values: [book.book_id])
-                os_log("The book is deleted!")
+                results = try db!.executeQuery(sql, values: [bookid])
             }
             catch {
-                os_log("Fail to delete the book!")
+                print("Fail to read data: \(error.localizedDescription)")
+            }
+            // Read data from the results
+            if results != nil {
+                while (results?.next())! {
+                    let book_id = results!.int(forColumn: BOOK_ID)
+                    let book_name = results!.string(forColumn: BOOK_NAME)
+                    let author = results!.string(forColumn: BOOK_AUTHOR)
+                    let price = results!.int(forColumn: BOOK_PRICE)
+                    let stringImage = results!.string(forColumn: BOOK_IMAGE)
+                    // Transform string image to UIImage
+                    let dataImage: Data = Data(base64Encoded: stringImage!, options: .ignoreUnknownCharacters)!
+                    let bookImage = UIImage(data: dataImage)
+                    // Create a meal to contain the values
+                    book = Book(book_id: Int(book_id), book_name: book_name!, author: author!, price: Int(price), image: bookImage!, quantity: 1)
+                    return book!
+                }
             }
         }
-        else {
+        else{
             os_log("Database is nil!")
         }
+        close()
+        return book!
     }
-    func readBookList(books:inout [Book]){
+    
+    func readBookList() -> [Book] {
+        var books = [Book]()
         if open() {
             var results: FMResultSet?
             let sql = "SELECT * FROM \(TABLE_NAME)"
@@ -147,25 +189,29 @@ class BookManagementDatabase {
             os_log("Database is nil!")
         }
         close()
+        return books
     }
     
-    func updateMeal(oldBook: Book, newBook: Book){
-        if db != nil {
-            let sql = "UPDATE \(TABLE_NAME) SET \(BOOK_NAME) = ?, \(BOOK_AUTHOR) = ?, \(BOOK_PRICE) = ?, \(BOOK_IMAGE) = ? WHERE \(BOOK_ID) = ?"
-            // Transform image of new meal to String
-            let newImageData: NSData = newBook.image!.pngData()! as NSData
-            let newStringImage = newImageData.base64EncodedString(options: .lineLength64Characters)
-            // Try to query the database
-            do{
-                try db!.executeUpdate(sql, values: [newBook.book_name, newBook.author, newBook.price, newStringImage, oldBook.book_id])
-                os_log("Successful to update the book!")
+    func updateBook(oldBook: Book, newBook: Book){
+        if open() {
+            if db != nil {
+                let sql = "UPDATE \(TABLE_NAME) SET \(BOOK_NAME) = ?, \(BOOK_AUTHOR) = ?, \(BOOK_PRICE) = ?, \(BOOK_IMAGE) = ? WHERE \(BOOK_ID) = ?"
+                // Transform image of new meal to String
+                let newImageData: NSData = newBook.image!.pngData()! as NSData
+                let newStringImage = newImageData.base64EncodedString(options: .lineLength64Characters)
+                // Try to query the database
+                do{
+                    try db!.executeUpdate(sql, values: [newBook.book_name, newBook.author, newBook.price, newStringImage, oldBook.book_id])
+                    os_log("Successful to update the book!")
+                }
+                catch{
+                    print("Fail to update the book: \(error.localizedDescription)")
+                }
             }
-            catch{
-                print("Fail to update the book: \(error.localizedDescription)")
+            else {
+                os_log("Database is nil!")
             }
         }
-        else {
-            os_log("Database is nil!")
-        }
+        close()
     }
 }

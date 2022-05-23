@@ -8,14 +8,14 @@
 import UIKit
 
 class CartsCell: UITableViewCell {
-    @IBOutlet weak var txtBookCode: UITextField!
-    @IBOutlet weak var txtBookTitle: UITextField!
-    @IBOutlet weak var txtAuthor: UITextField!
+    @IBOutlet weak var txtBookName: UITextField!
     @IBOutlet weak var txtPrice: UITextField!
     @IBOutlet weak var txtQuantity: UITextField!
     @IBOutlet weak var txtTotalMoney: UITextField!
     @IBOutlet weak var imgBook: UIImageView!
-    @IBOutlet weak var btnRemoveFromCart: UIButton!
+    @IBOutlet weak var btnAdd: UIButton!
+    private var dalCarts = CartDatabase()
+    var cartID: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +27,24 @@ class CartsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func add(_ sender: Any) {
+        let quantity = (Int(txtQuantity.text ?? "0") ?? 0) + 1
+        let price = Int(txtPrice.text ?? "0") ?? 0
+        txtQuantity.text = String(quantity)
+        txtTotalMoney.text = String(quantity * price)
+        dalCarts.updateCart(cartid: cartID!, quantity: quantity)
+    }
+    
+    @IBAction func apart(_ sender: Any) {
+        let quantity = (Int(txtQuantity.text ?? "0") ?? 0) - 1
+        let price = Int(txtPrice.text ?? "0") ?? 0
+        if quantity < 1 {
+            return
+        }
+        txtQuantity.text = String(quantity)
+        txtTotalMoney.text = String(quantity * price)
+        dalCarts.updateCart(cartid: cartID!, quantity: quantity)
+    }
+    
 }

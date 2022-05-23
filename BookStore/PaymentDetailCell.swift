@@ -12,7 +12,6 @@ class PaymentDetailCell: UITableViewCell {
     @IBOutlet weak var txtBookTitle: UITextField!
     @IBOutlet weak var txtAuthor: UITextField!
     @IBOutlet weak var txtPrice: UITextField!
-    @IBOutlet weak var txtQuantity: UITextField!
     @IBOutlet weak var txtTotalMoney: UITextField!
     @IBOutlet weak var imgBook: UIImageView!
     
