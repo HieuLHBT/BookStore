@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 class ForgotController: UIViewController {
     private var dalUser = UserDatabase()
@@ -58,7 +59,7 @@ class ForgotController: UIViewController {
         let alert = UIAlertController(title: "Warning", message: "Enter the wrong account or registered email!", preferredStyle: UIAlertController.Style.alert)
         let reset = UIAlertController(title: "Notification", message: "Password reset successful!", preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "OK", style: .default) { (alertAction) in }
-        if dalUser.forgotPassword(username: edtUsername.text!, email: edtEmail.text!) {
+        if dalUser.checkForgot(username: edtUsername.text!, email: edtEmail.text!) {
             reset.addAction(ok)
             self.present(reset, animated:true, completion: nil)
         }

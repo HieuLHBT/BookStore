@@ -8,18 +8,43 @@
 import UIKit
 
 class PaymentHistoryController: UITableViewController {
+    private var dalPayments = PaymentDatabase()
+    private var dalBooks = BookManagementDatabase()
+    private var dalDetails = DetailDatabase()
     var payments = [Payment]()
-
+    let formatter = NumberFormatter()
+    var user: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let payment = Payment(payment_id: 1, amount_paid: 150000) {
-            payments += [payment]
-        }
-        super.viewDidLoad()
-        if let payment = Payment(payment_id: 2, amount_paid: 110000) {
-            payments += [payment]
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        payments = dalPayments.readPaymentList(username: user!)
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identity = segue.identifier
+//        if identity == "PaymentHistoryController" {
+//            if let navigationController = navigationController {
+//                navigationController.popViewController(animated: true)
+//            }
+//        }
+        if identity == "PaymentDetailController" {
+            if let selecteIndexparthdRow = tableView.indexPathForSelectedRow {
+                //Get the selected form data source
+                if let destinationController = segue.destination as? PaymentDetailController {
+                    destinationController.paymentid = payments[selecteIndexparthdRow.row].payment_id
+                    print(selecteIndexparthdRow.row)
+                }
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
 
@@ -39,8 +64,15 @@ class PaymentHistoryController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath) as? PaymentHistoryCell
         {
             let payment = payments[indexPath.row]
-            cell.txtBillCode.text = String(payment.payment_id)
-            cell.txtAmountPaid.text = String(payment.amount_paid)
+            let details = dalDetails.readDetailList(paymentid: payment.payment_id)
+            var sum: Int = 0
+            for detail in details {
+                let book = dalBooks.readBook(bookid: detail.book_id)
+                let total = detail.quantity * book.price
+                sum += total
+            }
+            cell.txtPaymentID.text = String(payment.payment_id)
+            cell.txtAmountPaid.text = formatter.string(from: sum as NSNumber)!
             return cell
         }
         else {

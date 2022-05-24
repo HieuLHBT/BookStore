@@ -66,7 +66,7 @@ class LoginController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identity = segue.identifier
-        if identity != nil {
+        if identity == "ListOfBookController" {
             let alert = UIAlertController(title: "Warning", message: "Wrong password or account!", preferredStyle: UIAlertController.Style.alert)
             let ok = UIAlertAction(title: "OK", style: .default) { (alertAction) in }
             check = dalUser.checkLogin(username: username.text!, password: password.text!)
@@ -76,6 +76,7 @@ class LoginController: UIViewController {
                 return
             }
             if let destinationController = segue.destination as? ListOfBooksController {
+                destinationController.user = username.text
                 destinationController.check = check
             }
         }

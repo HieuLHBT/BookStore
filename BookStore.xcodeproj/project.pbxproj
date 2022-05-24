@@ -21,6 +21,8 @@
 		DF1F077C283B7B2E00F0844F /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077B283B7B2E00F0844F /* SignupController.swift */; };
 		DF1F077E283B99E100F0844F /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077D283B99E100F0844F /* UserDatabase.swift */; };
 		DF1F0780283BE08B00F0844F /* ForgotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F077F283BE08B00F0844F /* ForgotController.swift */; };
+		DF34D0F6283CC7820084ACAF /* DetailDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34D0F5283CC7820084ACAF /* DetailDatabase.swift */; };
+		DF34D0F8283CCE9A0084ACAF /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34D0F7283CCE9A0084ACAF /* Detail.swift */; };
 		DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A3283677B10004B0EC /* CartsCell.swift */; };
 		DF6478A6283677DE0004B0EC /* CartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A5283677DE0004B0EC /* CartsController.swift */; };
 		DF6478A828367C030004B0EC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6478A728367C030004B0EC /* Payment.swift */; };
@@ -81,6 +83,8 @@
 		DF1F077B283B7B2E00F0844F /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		DF1F077D283B99E100F0844F /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
 		DF1F077F283BE08B00F0844F /* ForgotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotController.swift; sourceTree = "<group>"; };
+		DF34D0F5283CC7820084ACAF /* DetailDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDatabase.swift; sourceTree = "<group>"; };
+		DF34D0F7283CCE9A0084ACAF /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		DF6478A3283677B10004B0EC /* CartsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsCell.swift; sourceTree = "<group>"; };
 		DF6478A5283677DE0004B0EC /* CartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartsController.swift; sourceTree = "<group>"; };
 		DF6478A728367C030004B0EC /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				DF97148E2839DB5400018A66 /* CartDatabase.swift */,
 				DF1F0773283B361200F0844F /* PaymentDatabase.swift */,
 				DF1F077D283B99E100F0844F /* UserDatabase.swift */,
+				DF34D0F5283CC7820084ACAF /* DetailDatabase.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				DF6478A728367C030004B0EC /* Payment.swift */,
 				DF9714942839EC6A00018A66 /* Cart.swift */,
 				DF1F0779283B409D00F0844F /* User.swift */,
+				DF34D0F7283CCE9A0084ACAF /* Detail.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				DF1F077A283B409D00F0844F /* User.swift in Sources */,
 				DFFC078328363F4E0070AEA0 /* Book.swift in Sources */,
 				DFA2ABD32837C8E100649FF8 /* FMDatabaseAdditions.m in Sources */,
+				DF34D0F6283CC7820084ACAF /* DetailDatabase.swift in Sources */,
 				DF6478A4283677B10004B0EC /* CartsCell.swift in Sources */,
 				DF6478A828367C030004B0EC /* Payment.swift in Sources */,
 				DF1F077E283B99E100F0844F /* UserDatabase.swift in Sources */,
@@ -432,6 +439,7 @@
 				DFA2ABD82837C96900649FF8 /* BookManagementDatabase.swift in Sources */,
 				DF137860282803D000DF0452 /* SceneDelegate.swift in Sources */,
 				DFA2ABD22837C8E100649FF8 /* FMDatabase.m in Sources */,
+				DF34D0F8283CCE9A0084ACAF /* Detail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

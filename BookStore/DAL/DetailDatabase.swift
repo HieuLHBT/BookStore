@@ -9,16 +9,17 @@ import Foundation
 import UIKit
 import os.log
 
-class CartDatabase {
+class DetailDatabase {
     //MARK: Database Properties
     let dPath: String
     let DB_NAME: String = "Books.sqlite"
     let db: FMDatabase?
     
     //MARK: Tables's properties
-    let TABLE_NAME: String = "carts"
-    let CART_ID: String = "_id"
+    let TABLE_NAME: String = "details"
+    let DETAIL_ID: String = "_id"
     let BOOK_ID: String = "bookid"
+    let PAYMENT_ID: String = "paymentid"
     let QUANTITY: String = "quantity"
     
     //MARK: Database Primitives
@@ -38,8 +39,9 @@ class CartDatabase {
     func createTables() {
         if open() {
             let sql = "CREATE TABLE " + TABLE_NAME + "( "
-            + CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + DETAIL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + BOOK_ID + " INTEGER, "
+            + PAYMENT_ID + " INTEGER, "
             + QUANTITY + " INTEGER) "
             if db!.executeStatements(sql) {
                 os_log("Table is created!")
@@ -78,12 +80,12 @@ class CartDatabase {
     }
     
     //MARK: Database APIs
-    func insertCart(bookid: Int, quantity: Int){
+    func insertDetail(bookid: Int, paymentid: Int, quantity: Int){
         if open() {
             // Transform the meal image to String
-            let sql = "INSERT INTO " + TABLE_NAME + "(" + BOOK_ID + ", " + QUANTITY + ")" + " VALUES (?, ?)"
-            if db!.executeUpdate(sql, withArgumentsIn: [bookid, quantity]) {
-                os_log("The cart is insert to the database!")
+            let sql = "INSERT INTO " + TABLE_NAME + "(" + BOOK_ID + ", " + PAYMENT_ID + ", " + QUANTITY + ")" + " VALUES (?, ?, ?)"
+            if db!.executeUpdate(sql, withArgumentsIn: [bookid, paymentid, quantity]) {
+                os_log("The detail is insert to the database!")
             }
             else {
                 os_log("Fail to insert the book!")
@@ -95,52 +97,14 @@ class CartDatabase {
         close()
     }
     
-    func deleteCart(cardid: Int){
-        if open() {
-            if db != nil {
-                let sql = "DELETE FROM \(TABLE_NAME) WHERE \(CART_ID) = ?"
-                do {
-                    try db!.executeUpdate(sql, values: [cardid])
-                    os_log("The cart is deleted!")
-                }
-                catch {
-                    os_log("Fail to delete the book!")
-                }
-            }
-            else {
-                os_log("Database is nil!")
-            }
-        }
-        close()
-    }
-    
-    func deleteAllCart(){
-        if open() {
-            if db != nil {
-                let sql = "DELETE FROM \(TABLE_NAME)"
-                do {
-                    try db!.executeUpdate(sql, values: nil)
-                    os_log("The cart is deleted all!")
-                }
-                catch {
-                    os_log("Fail to delete the book!")
-                }
-            }
-            else {
-                os_log("Database is nil!")
-            }
-        }
-        close()
-    }
-    
-    func readCartList() -> [Cart] {
-        var carts = [Cart]()
+    func readDetailList(paymentid: Int) -> [Detail] {
+        var details = [Detail]()
         if open() {
             var results: FMResultSet?
-            let sql = "SELECT * FROM \(TABLE_NAME)"
+            let sql = "SELECT * FROM \(TABLE_NAME) WHERE \(PAYMENT_ID) = ?"
             // Query
             do {
-                results = try db!.executeQuery(sql, values: nil)
+                results = try db!.executeQuery(sql, values: [paymentid])
             }
             catch {
                 print("Fail to read data: \(error.localizedDescription)")
@@ -148,12 +112,12 @@ class CartDatabase {
             // Read data from the results
             if results != nil {
                 while (results?.next())! {
-                    let cart_id = results!.int(forColumn: CART_ID)
                     let book_id = results!.int(forColumn: BOOK_ID)
+                    let payment_id = results!.int(forColumn: PAYMENT_ID)
                     let quantity = results!.int(forColumn: QUANTITY)
                     // Create a meal to contain the values
-                    let cart = Cart(cart_id: Int(cart_id), book_id: Int(book_id), quantity: Int(quantity))
-                    carts.append(cart!)
+                    let detail = Detail(book_id: Int(book_id), payment_id: Int(payment_id), quantity: Int(quantity))
+                    details.append(detail!)
                 }
             }
         }
@@ -161,26 +125,6 @@ class CartDatabase {
             os_log("Database is nil!")
         }
         close()
-        return carts
-    }
-    
-    func updateCart(cartid: Int, quantity: Int){
-        if open() {
-            if db != nil {
-                let sql = "UPDATE \(TABLE_NAME) SET \(QUANTITY) = ? WHERE \(CART_ID) = ?"
-                // Try to query the database
-                do{
-                    try db!.executeUpdate(sql, values: [quantity, cartid])
-                    os_log("Successful to update the cart!")
-                }
-                catch{
-                    print("Fail to update the book: \(error.localizedDescription)")
-                }
-            }
-            else {
-                os_log("Database is nil!")
-            }
-        }
-        close()
+        return details
     }
 }

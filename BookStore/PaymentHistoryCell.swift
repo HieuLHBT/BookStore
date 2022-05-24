@@ -8,7 +8,7 @@
 import UIKit
 
 class PaymentHistoryCell: UITableViewCell {
-    @IBOutlet weak var txtBillCode: UITextField!
+    @IBOutlet weak var txtPaymentID: UITextField!
     @IBOutlet weak var txtAmountPaid: UITextField!
     @IBOutlet weak var btnDetail: UIButton!
     

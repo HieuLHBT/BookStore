@@ -11,8 +11,11 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
     //MARK: properties
     var books = [Book]()
     private var dalBooks = BookManagementDatabase()
+    private var dalCarts = CartDatabase()
     @IBOutlet weak var btnManage: UIBarButtonItem!
+    @IBOutlet weak var btnCart: UIBarButtonItem!
     var check: String?
+    var user: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,12 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
         }
         else if check == "1" {
             btnManage.isEnabled = false
+        }
+        if dalCarts.readCartList().count == 0 {
+            btnCart.isEnabled = false
+        }
+        else {
+            btnCart.isEnabled = true
         }
     }
     
@@ -64,5 +73,25 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identity = segue.identifier
+        if identity == "CartsController" {
+            if let destinationController = segue.destination as? CartsController {
+                destinationController.user = user
+            }
+        }
+        if identity == "HistoryController" {
+            if let destinationController = segue.destination as? PaymentHistoryController {
+                destinationController.user = user
+            }
+        }
+    }
+    
+    @IBAction func unWindFormBookManagementController(segue:UIStoryboardSegue) {
+        //Get soucre controller (MealDetailController)
+        books = dalBooks.readBookList()
+        tableView.reloadData()
     }
 }

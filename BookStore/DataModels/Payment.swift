@@ -10,10 +10,10 @@ import UIKit
 
 class Payment {
     var payment_id:Int
-    var amount_paid:Int
+    var username:String
     
-    init?(payment_id:Int, amount_paid:Int) {
+    init?(payment_id:Int, username:String) {
         self.payment_id = payment_id
-        self.amount_paid = amount_paid
+        self.username = username
     }
 }

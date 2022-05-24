@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import os.log
 
 class CartsCell: UITableViewCell {
     @IBOutlet weak var txtBookName: UITextField!
@@ -16,34 +17,36 @@ class CartsCell: UITableViewCell {
     @IBOutlet weak var btnAdd: UIButton!
     private var dalCarts = CartDatabase()
     var cartID: Int?
+    let formatter = NumberFormatter()
+    var priceBook: Int?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     @IBAction func add(_ sender: Any) {
+        formatter.numberStyle = NumberFormatter.Style.decimal
         let quantity = (Int(txtQuantity.text ?? "0") ?? 0) + 1
-        let price = Int(txtPrice.text ?? "0") ?? 0
         txtQuantity.text = String(quantity)
-        txtTotalMoney.text = String(quantity * price)
+        txtTotalMoney.text = formatter.string(from: (quantity * priceBook!) as NSNumber)!
         dalCarts.updateCart(cartid: cartID!, quantity: quantity)
     }
     
     @IBAction func apart(_ sender: Any) {
         let quantity = (Int(txtQuantity.text ?? "0") ?? 0) - 1
-        let price = Int(txtPrice.text ?? "0") ?? 0
         if quantity < 1 {
             return
         }
         txtQuantity.text = String(quantity)
-        txtTotalMoney.text = String(quantity * price)
+        txtTotalMoney.text = formatter.string(from: (quantity * priceBook!) as NSNumber)!
         dalCarts.updateCart(cartid: cartID!, quantity: quantity)
     }
     

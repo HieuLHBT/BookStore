@@ -8,19 +8,18 @@
 import UIKit
 
 class PaymentDetailController: UITableViewController {
-    var books = [Book]()
+    @IBOutlet weak var txtPaymentid: UILabel!
+    private var dalBooks = BookManagementDatabase()
+    private var dalDetails = DetailDatabase()
+    var details = [Detail]()
+    var paymentid: Int?
+    let formatter = NumberFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 1) {
-            books += [book]
-        }
-        if let book = Book(book_id: 2, book_name: "Sách hai", author: "Tác giả hai", price: 120000, image: UIImage(named: "Image2"), quantity: 2) {
-            books += [book]
-        }
-        if let book = Book(book_id: 3, book_name: "Sách ba", author: "Tác giả ba", price: 70000, image: UIImage(named: "Image3"), quantity: 3) {
-            books += [book]
-        }
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        details = dalDetails.readDetailList(paymentid: paymentid!)
+        txtPaymentid.text = String(paymentid!)
     }
 
     // MARK: - Table view data source
@@ -31,7 +30,7 @@ class PaymentDetailController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        return details.count
     }
 
     
@@ -39,13 +38,15 @@ class PaymentDetailController: UITableViewController {
         let reuseCell = "PaymentDetailCell"
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath) as? PaymentDetailCell
         {
-            let book = books[indexPath.row]
+            let detail = details[indexPath.row]
+            let book = dalBooks.readBook(bookid: detail.book_id)
             cell.txtBookCode.text = String(book.book_id)
             cell.txtBookTitle.text = book.book_name
             cell.txtAuthor.text = book.author
-            cell.txtPrice.text = String(book.price)
+            cell.txtPrice.text = formatter.string(from: book.price as NSNumber)!
             cell.imgBook.image = book.image
-            cell.txtTotalMoney.text = String(book.total_money)
+            cell.txtTotalMoney.text = formatter.string(from: (book.price * detail.quantity) as NSNumber)!
+            cell.txtQuantity.text = String(detail.quantity)
             return cell
         }
         else {

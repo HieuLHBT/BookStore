@@ -76,6 +76,7 @@ class UserDatabase {
     func close(){
         if db != nil {
             db!.close()
+            os_log("Database is close!")
         }
     }
     
@@ -85,7 +86,7 @@ class UserDatabase {
             // Transform the meal image to String
             let sql = "INSERT INTO " + TABLE_NAME + "(" + USERNAME + ", " + PASSWORD + ", " + EMAIL + ", " + CHECK + ")" + " VALUES (?, ?, ? , ?)"
             if db!.executeUpdate(sql, withArgumentsIn: [user.username, user.password, user.email, user.check]) {
-                os_log("The book is insert to the database!")
+                os_log("The user is insert to the database!")
                 close()
                 return true
             }
@@ -127,27 +128,52 @@ class UserDatabase {
         return "2"
     }
     
-    func forgotPassword(username: String, email: String) -> Bool {
-        var check = false
+    func checkForgot(username: String, email: String) -> Bool {
         if open() {
-            if db != nil {
-                let sql = "UPDATE \(TABLE_NAME) SET \(PASSWORD) = ? WHERE \(USERNAME) = ? and \(EMAIL) = ?"
-                // Try to query the database
-                do{
-                    try db!.executeUpdate(sql, values: ["123456", username, email])
-                    os_log("Successful to update the book!")
-                    check = true
-                }
-                catch{
-                    print("Fail to update the book: \(error.localizedDescription)")
-                }
+            var results: FMResultSet?
+            let sql = "SELECT * FROM \(TABLE_NAME) WHERE \(USERNAME) = ? and \(EMAIL) = ?"
+            // Query
+            do {
+                results = try db!.executeQuery(sql, values: [username, email])
             }
-            else {
-                os_log("Database is nil!")
+            catch {
+                print("Fail to read data: \(error.localizedDescription)")
+            }
+            // Read data from the results
+            if results != nil {
+                while (results?.next())! {
+                    if results!.string(forColumn: CHECK) != nil {
+                        close()
+                        forgotPassword(username: username, email: email)
+                        return true
+                    }
+                }
             }
         }
+        else{
+            os_log("Database is nil!")
+        }
         close()
-        return check
+        return false
+    }
+    
+    func forgotPassword(username: String, email: String) {
+        if open() {
+            let sql = "UPDATE \(TABLE_NAME) SET \(PASSWORD) = ? WHERE \(USERNAME) = ? AND \(EMAIL) = ?"
+            // Try to query the database
+            do{
+                try db!.executeUpdate(sql, values: ["123456", username, email])
+                os_log("Successful to update the book!")
+            }
+            catch{
+                print("Fail to update the book: \(error.localizedDescription)")
+            }
+            
+        }
+        else {
+            os_log("Database is nil!")
+        }
+        close()
     }
     
     func readUserList() -> [User] {
