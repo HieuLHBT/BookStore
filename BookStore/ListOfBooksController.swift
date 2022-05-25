@@ -83,8 +83,10 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
             }
         }
         if identity == "HistoryController" {
+            
             if let destinationController = segue.destination as? PaymentHistoryController {
                 destinationController.user = user
+                destinationController.controller = .list
             }
         }
     }

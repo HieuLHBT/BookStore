@@ -43,11 +43,9 @@ class CartsController: UITableViewController {
                     dalDetails.insertDetail(bookid: cart.book_id, paymentid: paymentid, quantity: cart.quantity)
                 }
                 dalCarts.deleteAllCart()
-                carts = dalCarts.readCartList()
-                tableView.reloadData()
-                btnPayment.isEnabled = false
                 if let destinationController = segue.destination as? PaymentHistoryController {
                     destinationController.user = user
+                    destinationController.controller = .cart
                 }
             }
         }

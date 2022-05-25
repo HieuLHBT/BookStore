@@ -23,4 +23,12 @@ class PaymentHistoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    public func getCell(button:UIButton)->PaymentHistoryCell? {
+        if button === btnDetail {
+            return self
+        }
+        else {
+            return nil
+        }
+    }
 }

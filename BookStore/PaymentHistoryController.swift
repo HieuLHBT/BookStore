@@ -14,6 +14,11 @@ class PaymentHistoryController: UITableViewController {
     var payments = [Payment]()
     let formatter = NumberFormatter()
     var user: String?
+    enum Controller {
+        case list
+        case cart
+    }
+    var controller: Controller = .list
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +27,18 @@ class PaymentHistoryController: UITableViewController {
     }
     
     @IBAction func back(_ sender: Any) {
-        if let navigationController = navigationController {
-            navigationController.popViewController(animated: true)
+        switch controller {
+        case .list:
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: true)
+            }
+        case .cart:
+            //pop as kieu ve man hinh can khac null thi dung
+            //Get the navigation controller
+            if let navigationController = navigationController {
+                navigationController.popViewController(animated: false)
+                navigationController.popViewController(animated: true)
+            }
         }
     }
     
@@ -35,13 +50,32 @@ class PaymentHistoryController: UITableViewController {
 //            }
 //        }
         if identity == "PaymentDetailController" {
-            if let selecteIndexparthdRow = tableView.indexPathForSelectedRow {
-                //Get the selected form data source
-                if let destinationController = segue.destination as? PaymentDetailController {
-                    destinationController.paymentid = payments[selecteIndexparthdRow.row].payment_id
-                    print(selecteIndexparthdRow.row)
+            if let sender = sender as? UIButton { //sender all item prepare
+                for cell in tableView.visibleCells {
+                    let paymentcell = cell as? PaymentHistoryCell
+                    if let detailcel = paymentcell?.getCell(button: sender) {
+                        if let destinationController = segue.destination as? PaymentDetailController {
+                            destinationController.paymentid = Int(detailcel.txtPaymentID.text!)
+                            return
+                        }
+                       
+                    }
+//                    if (paymentcell?.btnDetail === sender) {
+//                        if let destinationController = segue.destination as? PaymentDetailController {
+//                            destinationController.paymentid = Int((paymentcell?.txtPaymentID.text)!)
+//                        }
+//                        return
+//                    }
                 }
             }
+            
+//            if let selecteIndexparthdRow = tableView.indexPathForSelectedRow {
+//                //Get the selected form data source
+//                if let destinationController = segue.destination as? PaymentDetailController {
+//                    destinationController.paymentid = payments[selecteIndexparthdRow.row].payment_id
+//                    print(selecteIndexparthdRow.row)
+//                }
+//            }
         }
     }
     
@@ -79,51 +113,5 @@ class PaymentHistoryController: UITableViewController {
             fatalError("Can't create the Cell")
         }
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

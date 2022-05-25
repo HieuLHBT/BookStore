@@ -400,6 +400,9 @@
                                                     <buttonConfiguration key="configuration" style="filled" title="Detail">
                                                         <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <segue destination="bdx-1r-4Uk" kind="show" identifier="PaymentDetailController" id="ebH-u9-FvU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -423,9 +426,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="btnDetail" destination="fyl-5h-KuN" id="dOB-BI-OWQ"/>
                                     <outlet property="txtAmountPaid" destination="7em-Tv-7xa" id="5US-6j-mgu"/>
                                     <outlet property="txtPaymentID" destination="kkd-X4-4xA" id="u68-JP-bAc"/>
-                                    <segue destination="bdx-1r-4Uk" kind="show" identifier="PaymentDetailController" id="Ndf-s5-YO3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1660,7 +1663,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="sxF-oA-uww"/>
         <segue reference="hhj-Id-up8"/>
-        <segue reference="jgu-Ip-e2d"/>
+        <segue reference="mHi-s1-6gI"/>
         <segue reference="ddG-th-OxH"/>
         <segue reference="W93-aS-AAG"/>
     </inferredMetricsTieBreakers>
