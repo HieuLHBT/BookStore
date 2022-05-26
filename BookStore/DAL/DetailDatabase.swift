@@ -127,4 +127,35 @@ class DetailDatabase {
         close()
         return details
     }
+    
+    func readDetailListAll() -> [Detail] {
+        var details = [Detail]()
+        if open() {
+            var results: FMResultSet?
+            let sql = "SELECT * FROM \(TABLE_NAME)"
+            // Query
+            do {
+                results = try db!.executeQuery(sql, values: nil)
+            }
+            catch {
+                print("Fail to read data: \(error.localizedDescription)")
+            }
+            // Read data from the results
+            if results != nil {
+                while (results?.next())! {
+                    let book_id = results!.int(forColumn: BOOK_ID)
+                    let payment_id = results!.int(forColumn: PAYMENT_ID)
+                    let quantity = results!.int(forColumn: QUANTITY)
+                    // Create a meal to contain the values
+                    let detail = Detail(book_id: Int(book_id), payment_id: Int(payment_id), quantity: Int(quantity))
+                    details.append(detail!)
+                }
+            }
+        }
+        else{
+            os_log("Database is nil!")
+        }
+        close()
+        return details
+    }
 }

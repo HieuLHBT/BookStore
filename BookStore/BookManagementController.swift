@@ -10,6 +10,7 @@ import UIKit
 class BookManagementController: UITableViewController {
     var books = [Book]()
     private var dal = BookManagementDatabase()
+    private var dalDetails = DetailDatabase()
     enum NavigationsType {
         case newBook
         case editBook
@@ -20,7 +21,15 @@ class BookManagementController: UITableViewController {
         super.viewDidLoad()
         books = dal.readBookList()
         if books.count == 0 {
-            if let book = Book(book_id: 1, book_name: "Sách một", author: "Tác giả một", price: 80000, image: UIImage(named: "Image1"), quantity: 2) {
+            if let book = Book(book_id: 1, book_name: "Nanh trắng", author: "Jack London", price: 70000, image: UIImage(named: "NanhTrang"), quantity: 2) {
+                dal.insertBook(book: book)
+                books = dal.readBookList()
+            }
+            if let book = Book(book_id: 1, book_name: "Kính vạn hoa", author: "Nguyễn Nhật Ánh", price: 65000, image: UIImage(named: "KinhVanHoa"), quantity: 2) {
+                dal.insertBook(book: book)
+                books = dal.readBookList()
+            }
+            if let book = Book(book_id: 1, book_name: "Thép đã tôi thế đấy", author: "Nikolai Ostrovsky", price: 120000, image: UIImage(named: "ThepDaToiTheDay"), quantity: 2) {
                 dal.insertBook(book: book)
                 books = dal.readBookList()
             }
@@ -70,11 +79,24 @@ class BookManagementController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?  {
         // add the action button you want to show when swiping on tableView's cell , in this case add the delete button.
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] (action, sourceView, completionHandler) in
-            dal.deleteBook(book: books[indexPath.row])
-            books = dal.readBookList()
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            completionHandler(true)
+            let alert = UIAlertController(title: "Warning", message: "Books that have been archived cannot be deleted!", preferredStyle: UIAlertController.Style.alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { (alertAction) in }
+            var check = false
+            for detail in dalDetails.readDetailListAll() {
+                if books[indexPath.row].book_id == detail.book_id {
+                    alert.addAction(ok)
+                    self.present(alert, animated:true, completion: nil)
+                    check = true
+                    break
+                }
+            }
+            if !check {
+                dal.deleteBook(book: books[indexPath.row])
+                books = dal.readBookList()
+                // Delete the row from the data source
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                completionHandler(true)
+            }
         }
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
         config.performsFirstActionWithFullSwipe = false

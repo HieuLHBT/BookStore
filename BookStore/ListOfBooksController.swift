@@ -16,10 +16,12 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var btnCart: UIBarButtonItem!
     var check: String?
     var user: String?
+    let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         books = dalBooks.readBookList()
+        formatter.numberStyle = NumberFormatter.Style.decimal
         if check == "0" {
             btnManage.isEnabled = true
         }
@@ -59,7 +61,7 @@ class ListOfBooksController: UITableViewController, UITextFieldDelegate {
             cell.txtBookCode.text = String(book.book_id)
             cell.txtBookTitle.text = book.book_name
             cell.txtAuthor.text = book.author
-            cell.txtPrice.text = String(book.price)
+            cell.txtPrice.text = formatter.string(from: book.price as NSNumber)!
             cell.imgBook.image = book.image
             cell.txtQuantity.text = String(book.quantity)
             return cell
